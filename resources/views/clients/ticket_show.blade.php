@@ -64,7 +64,6 @@
                                                 <th style="text-align: center;"> عملیات مورد نظر </th>        
                                                 <th style="text-align: center;"> وضعیت پاسخگوئی </th>
                                                 <th style="text-align: center;"> اولویت تیکت </th>
-                                                <th style="text-align: center;"> متن تیکت </th>
                                                 <th style="text-align: center;"> عنوان تیکت </th>
                                                 <th style="text-align: center;"> تاریخ ثبت </th>
                                                 <th style="text-align: center;"> کد پیگیری </th>              
@@ -97,7 +96,6 @@
                                                         <td style="color: black; text-align: center;"> اولویت زیاد</td>
                                                     @endif                                         
                                                 
-                                                <td style="text-align: center; font-family: b nazanin;"> {!! $ticket->content !!} </td>
                                                 <td style="text-align: center;"> {{ $ticket->title }} </td>
                                                 <td style="text-align: center;"> {{ jdate($ticket->created_at)->format('%B %d، %Y') }} </td>
                                                 <td style="text-align: center;"> {{ $ticket->codepaygiry }} </td>                                              
@@ -112,6 +110,57 @@
 
                             </div>            
             </div>
+
+            <div class="row">
+                        <div class="col-lg-12"> 
+                          @foreach( $tickets as $ticket )                           
+                            <div class="modal fade" id="show{{ $ticket->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title" id="H2" style="font-family: b koodak; direction: rtl;">جزئیات تیکت با شماره<span style="color:blue; direction: rtl; text-align: justify;"> "{{ $ticket->ticket_num }}" </span></h4>
+                                        </div>
+                                        <div class="modal-body" style="direction: rtl;">                    
+                                        <span style="font-family: b koodak; direction: rtl; float: right;"> عنوان تیکت :</span>
+                                          <br>
+                                          <span style="font-family: b nazanin; direction: rtl; text-align: justify;">
+                                              {{ $ticket->title }}
+                                          </span>
+                                          <br>
+                                          <span style="font-family: b koodak; direction: rtl; float: right;"> متن تیکت :</span>
+                                          <br>
+                                         
+                                          <span style="font-family: b nazanin; direction: rtl; text-align: justify;">
+                                              {!! $ticket->content !!}
+                                          </span>
+                                          <br>
+                                          
+                                          <span style="font-family: b koodak; direction: rtl; float: right; color: red"> تاریخ ثبت : {{ jdate($ticket->created_at)->format('%B %d، %Y') }}</span>
+                                          <br>
+                                          <br>
+                                          <hr>
+                                           <span style="font-family: b koodak; direction: rtl; float: right;"> پاسخ تیکت :</span>
+                                          <br>
+
+                                          @if($ticket->reply_code =='1')
+                                           <span style="font-family: b nazanin; direction: rtl; text-align: justify;">{!! $ticket->reply !!}</span> 
+                                          <br>
+                                          <br>
+                                          <span style="font-family: b koodak; direction: rtl; float: right; color: green;"> تاریخ پاسخگویی : {{ jdate($ticket->reply_date)->format('%B %d، %Y') }}</span>
+                                          @elseif($ticket->reply_code =='0')                                   
+                                          <span style="font-family: b nazanin; direction: rtl; text-align: justify; color: red;">پاسخی برای این تیکت ثبت نشده است</span> 
+                                          @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" style="font-family: b koodak;" class="btn btn-default" data-dismiss="modal">بستن</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          @endforeach
+                        </div>
+                    </div>
 
            
 <?php $url10=Url('/add'); ?>

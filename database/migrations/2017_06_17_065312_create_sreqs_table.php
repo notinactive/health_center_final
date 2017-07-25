@@ -29,6 +29,7 @@ class CreateSreqsTable extends Migration
             $table->timestamps('cancel_confirm_date');
             $table->timestamps('cancel_reject_date');
             $table->integer('seen')->default(0);
+            $table->integer('certificate')->default(0);
             $table->timestamps();
         });
     }

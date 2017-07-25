@@ -8,6 +8,7 @@
 	Route::resource('product' , 'ProductController');
 	Route::resource('user' , 'UserController');
 	Route::resource('unit' , 'UnitController');
+    Route::resource('serv_certificate' , 'ServCertificateController');
 ///////////////////////////////////////////////////////////////////////////////  
 	Route::get('prequest/create' , 'PRequestController@create');
 	Route::get('index' , 'HomeController@index');		
@@ -22,6 +23,8 @@
     Route::get('reject_product' , 'HomeController@reject_product')->name('reject_product');
     Route::get('notcheck_service' , 'HomeController@notcheck_service')->name('notcheck_service');
     Route::get('notcheck_product' , 'HomeController@notcheck_product')->name('notcheck_product');
+    Route::get('serv_certificate/create/{id}' , 'ServCertificateController@create')->name('cert.create');
+    Route::get('city' , 'UnitController@city');
 ////////////////////////////////////////////////////////////////////////////////
 	Route::post('save' , 'PRequestController@save_ajax');
 	Route::post('add' , 'PRequestController@add');

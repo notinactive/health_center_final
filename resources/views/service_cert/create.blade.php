@@ -15,7 +15,7 @@ use App\Product;
 ?>
 <div class="col-lg-12">
 	<div class="row" >
-		<h3> افزودن درخواست خدمت جدید </h3> 
+		<h3> ثبت گواهی خدمت برای درخواست با شماره<span style="color: blue; font-size: 22px;"> "{{ $services->codesefaresh }}"  </span><a href="" class="btn btn-info btn-sm btn-line" data-toggle="modal" data-target="#show{{ $services->id }}">مشاهده جزئیات درخواست </a> </h3> 
 	</div>
 </div>
 <hr/>
@@ -29,37 +29,37 @@ use App\Product;
 		    <div class="col-lg-12">
 		        <div class="panel panel-default">
 		            <div class="panel-heading">
-		                ثبت محتوای درخواست خدمت     
+		                ثبت گواهی انجام خدمت    
 		            </div>
 		            <div class="panel-body">
 		                <div class="table-responsive">			                    
 		                	
 		                	<div class="form-group">
 		                	
-		                	   <label for="service_name" class="control-label col-lg-2">نام خدمت</label>
-		                	   <label for="service_name" class="control-label col-lg-1"></label>
-		                	    <label for="service_date" class="control-label col-lg-2">برآورد مقدار</label>
-		                	    <label for="service_name" class="control-label col-lg-2"></label>
-		                	    <label for="service_date" class="control-label col-lg-2">توضیحات مربوطه</label>
+		                	   <label for="service_name" class="control-label col-lg-2">شرح</label>
+		                	   <label for="service_name" class="control-label col-lg-2"></label>
+		                	    <label for="service_date" class="control-label col-lg-2">تعداد</label>
+		                	    <label for="service_name" class="control-label col-lg-1"></label>
+		                	    <label for="service_date" class="control-label col-lg-2">مبلغ کل (ریال)</label>
 		                	    <label for="service_date" class="control-label col-lg-2"></label>
 		                	    <br />
 		                	    <br />
 		                	    
 		                <div id='TextBoxesGroup'>    
 		                	<div id="TextBoxDiv1">
-								<div class="col-lg-3">
-									 <select class="itemName form-control" name="name"></select>
+								<div class="col-lg-5">
+									 <input type="text" name="description" class="form-control" placeholder="شرح را وارد نمائید">
+								</div>
+
+								<div class="col-lg-2">
+									 <input type="text" class="form-control" name="count" placeholder="تعداد مورد نظر">
 								</div>
 
 								<div class="col-lg-3">
-									 <input type="text" class="form-control" name="count" placeholder="مقدار مورد نظر را وارد نمائید">
-								</div>
-
-								<div class="col-lg-4">
-									 <input type="text" class="form-control" name="description" placeholder="توضیحات مربوطه را وارد نمائید">
+									 <input type="text" class="form-control" name="price" placeholder="مبلغ را وارد نمائید">
 								</div>
 								<div class="col-lg-2">
-								  <input type="submit" class="btn btn-success btn-sm" name="btn_buy" id="btn_buy" value="افزودن به لیست خرید" />
+								  <input type="submit" class="btn btn-success btn-sm" name="btn_buy" id="btn_buy" value="افزودن به گواهی" />
 								</div>
 							</div>
 						</div>									
@@ -68,7 +68,7 @@ use App\Product;
 								
 							</div>
 							<hr>
-
+					
 					  <div id="salam">
 			            <table class="table table-striped table-bordered table-hover">
 			                <thead id="thead">
@@ -80,6 +80,51 @@ use App\Product;
 			            </table>
 			        </div>
 
+						<div class="row">
+		    <div class="col-lg-12">
+		        
+		        <div class="modal fade" id="show{{ $services->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		            <div class="modal-dialog">
+		                <div class="modal-content">
+		                    <div class="modal-header">
+		                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		                        <h4 class="modal-title" id="H2"> جزئیات درخواست {{ $services->codesefaresh }} </h4>
+		                    </div>
+		                    <div class="modal-body">                    
+		                       <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+		                        <thead>
+		                            <tr>
+		                                <th style="text-align: center;">سرویس انتخابی </th>
+		                                <th style="text-align: center;">مقدار برآورد شده</th>
+		                                <th style="text-align: center;">توضیحات مربوطه</th>
+		                            </tr>
+		                        </thead>
+		                        <tbody>
+		                        @foreach( $details as $detail )
+		                        <tr style="text-align: center;">
+		                        	<td>{{ getservname($detail->services_id) }}</td>
+		                        	<td>{{ $detail->count }}</td>
+		                        	@if($detail->description == '')
+		                        	<td><span style="font-family: b nazanin; color: red;">توضیحی ثبت نشده است</span></td>
+		                        	@else
+		                        	<td>{{ $detail->description }}</td>
+		                        	@endif
+		                        </tr>
+		                        @endforeach
+		                        </tbody>
+		                    </table>
+		                    </div>
+		                    <div class="modal-footer">
+		                        
+		                        <button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>                       
+
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		        
+		    </div>
+</div>					 					
                    
 		                </div>
 		            </div>
@@ -89,80 +134,13 @@ use App\Product;
 		</div>
 	
 		<div class="form-actions" style="text-align:center;margin-bottom:80px;">
-		   <input type="submit" value="ثبت نهایی درخواست" class="btn btn-primary btn-sm" />
-		   <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete">انصراف و بازگشت</a>
+		   <input type="submit" value="ثبت نهایی گواهی" class="btn btn-primary btn-sm" />
+		   <a href="{{ route('srequest.index') }}" class="btn btn-danger btn-sm" >انصراف و بازگشت</a>
 		</div>
 
 		</form>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-lg-12">
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="H2">حذف درخواست کالا</h4>
-                    </div>
-                    <div class="modal-body">                    
-                    	<table>
-                        <tr>
-                            <td><img src="<?= Url('images/forbidden.png'); ?>" style="width: 45px; height: 45px;" /></td>
-                            <td><span style="font-family: b koodak; font-weight: bold; color: red;">آیا از انصراف و حذف این درخواست اطمینان دارید</span></td>                            
-                        </tr>
-                    </table>
-                    </div>
-                    <div class="modal-footer">                        
-                      <form action="<?= Url('/preject'); ?>" method="POST">
-	                    	<input type="hidden" name="_token" value="{{ csrf_token() }}">  
-	                    	<input type="submit" name="btndelete" value="حذف درخواست" class="btn btn-danger">
-	                	<button type="button" class="btn btn-default" data-dismiss="modal">بستن</button>
-                      </form>  
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-   <script type="text/javascript">//for AutoComplete in product name
-
-
-      $('.itemName').select2({
-
-        placeholder: 'خدمت را انتخاب نمائید',
-
-        ajax: {
-
-          url: '/select3-autocomplete-ajax',
-
-          dataType: 'json',
-
-          delay: 250,
-
-          processResults: function (data) {
-
-            return {
-
-              results:  $.map(data, function (item) {
-
-                    return {
-
-                        text: item.name,
-
-                        id: item.id
-
-                    }
-                })
-            };
-          },
-          cache: true
-        }
-      });
-</script>
-
 
 <?php $url10=Url('/add'); ?>
 <script>
@@ -232,8 +210,16 @@ use App\Product;
 
 @endsection
 
+<?php
 
+use App\Service;
 
+function getservname( $id )
+{
+    $service = Service::where('id', $id)->first()['name'];
+    return $service;
+}
+?>
 
 @section('script')
 <script src="<?= Url('assets/plugins/jasny/js/bootstrap-fileupload.js'); ?>"></script>

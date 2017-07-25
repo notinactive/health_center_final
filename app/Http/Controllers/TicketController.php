@@ -29,7 +29,7 @@ class TicketController extends Controller
     {
     	$ticket = new Ticket($request->all());
     	$ticket->ticket_num =time();
-    	$ticket->codepaygiry = 'Ticket'.time();
+    	$ticket->codepaygiry = 'Ticket-'.time();
         $user_id = auth()->user()->id;
         $ticket->seen = 0;
         $unit_id = User::where('id' , $user_id)->first()['unit'];

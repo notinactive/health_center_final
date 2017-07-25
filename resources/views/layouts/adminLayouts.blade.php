@@ -215,7 +215,7 @@
 
                 <li class="panel">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#chart-nav3">
-                        <i class="icon-bar-chart"></i> مدیریت گواهی انجام خدمت
+                        <i class="icon-bar-chart"></i> مدیریت گواهی ها
        
                         <span class="pull-left">
                             <i class="icon-angle-left"></i>
@@ -223,8 +223,9 @@
                     </a>
                     <ul class="collapse" id="chart-nav3">
 
-                        <li><a href=""><i class="icon-angle-left"></i> ایجاد گواهی جدید </a></li>
-                        <li><a href=""><i class="icon-angle-left"></i>نمایش و مدیریت گواهی ها</a></li>
+                        <li><a href="{{ route('serv_certificate.index') }}"><i class="icon-angle-left"></i>نمایش و مدیریت گواهی انجام خدمت</a></li>
+
+                        <li><a href=""><i class="icon-angle-left"></i>نمایش و مدیریت گواهی خرید کالا</a></li>
                         
                     </ul>
                 </li>

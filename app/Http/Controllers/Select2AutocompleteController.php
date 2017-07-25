@@ -113,7 +113,7 @@ class Select2AutocompleteController extends Controller
 
     }
 
-
+   
         public function client_dataAjax(Request $request)
 
             {

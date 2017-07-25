@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Sreq;
 
 class SRequestController extends Controller
 {
@@ -13,7 +14,8 @@ class SRequestController extends Controller
      */
     public function index()
     {
-        //
+        $services = Sreq::orderby('id' , 'desc')->paginate(10);        
+        return view('srequest.index' , compact('services'));
     }
 
     /**
@@ -23,7 +25,7 @@ class SRequestController extends Controller
      */
     public function create()
     {
-        //
+        return view('srequest.create');
     }
 
     /**

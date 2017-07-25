@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UnitRequest;
-use App\Unit;
-use App\Province;
-use App\City;
+use App\Sreq;
+use App\Requestservice;
+use App\ServCertificate;
 
-class UnitController extends Controller
+class ServCertificateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $units = Unit::orderby('id' , 'DESC')-> paginate(7);         
-        return view('unit.index' , ['units' => $units]);
+        $certificates = ServCertificate::orderby('id' , 'DESC')->paginate(10);
+        return view('service_cert.index' , compact('certificates'));
     }
 
     /**
@@ -26,12 +25,11 @@ class UnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $provinces = Province::orderby('id' , 'ASC')->get(); 
-        $cities = City::orderby('id' , 'ASC')->get();
-
-        return view('unit.create' , compact('provinces' , 'cities'));
+        $services = Sreq::find($id);
+        $details = Requestservice::where('sreqs_id' , $id)->get();
+        return view('service_cert.create' , compact('services' , 'details'));
     }
 
     /**
@@ -40,15 +38,9 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UnitRequest $request)
+    public function store(Request $request)
     {
-        $unit = new Unit($request->all());
-
-        if($unit -> save())
-        {
-            return redirect('/unit');
-        }
-        
+        //
     }
 
     /**
@@ -70,8 +62,7 @@ class UnitController extends Controller
      */
     public function edit($id)
     {
-        $units = Unit::find($id);        
-        return view('unit.edit' , ['units' => $units]);
+        //
     }
 
     /**
@@ -83,17 +74,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $re = Unit::find($id);
-
-        if($re->update($request->all()))
-        {
-            return redirect('unit');
-        }
-
-        else
-        {
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -105,21 +86,5 @@ class UnitController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-     public function search(Request $request)
-    {
-        if($request->ajax())
-        {
-          $pro = Unit:: where('id',$request->name)->get();
-          
-          return response()->json($pro);
-        }
-    }
-
-    public function city(Request $request)
-    {
-        $city = City::where('province_id' , $request->id)->get();
-        return Response()->json($city);
     }
 }

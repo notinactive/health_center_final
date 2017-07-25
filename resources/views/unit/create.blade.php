@@ -55,6 +55,27 @@
 							</div>
 
 							<div class="form-group">
+		                	    <label for="phone" class="control-label col-lg-3">نام استان</label>
+								<div class="col-lg-7">
+									<select id="province" name="province_id" class="form-control" data-action="<?=Url('/city'); ?>">
+									    <option value="0" style="font-family: b nazanin;">لطفا یک استان انتخاب نمائید</option>
+										@foreach($provinces as $province)
+										<option value="{{ $province->id }}">{{ $province->name }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
+		                	    <label for="phone" class="control-label col-lg-3">نام شهرستان</label>
+								<div class="col-lg-7">
+									<select id="city" name="city_id" class="form-control">
+
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label for="description" class="control-label col-lg-3">توضیحات مربوطه</label>
 								<div class="col-lg-7">
 									<textarea name="description" class="ckeditor" id="description" placeholder="توضیحات مربوطه را وارد نمائید"></textarea>
@@ -76,6 +97,47 @@
 
 	</div>
 </div>
+
+<script type="text/javascript">
+	function getCities(th)
+{
+ 
+    selected_city = $('#city').attr('data-selected') || null;
+ 
+ 
+    $('#city').html('').fadeIn(800).append('<option value="0">لطفا کمی صبر کنید ...</option>');
+ 
+    $.ajax({
+        type: "GET",
+        data:{id:$(th).val()},
+        url: $(th).data('action') ,
+        dataType : 'json',
+        success: function(data)
+        {
+        	
+            $('#city').html('').fadeIn(800).append('<option value="0">انتخاب شهر</option>');
+            $.each(data, function(i, city){
+                if(selected_city == city.id) $('#city').append('<option value="' + city.id + '" selected>' + city.name + '</option>');
+                else $('#city').append('<option value="' + city.id + '">' + city.name + '</option>');
+            });
+        },
+        error : function(data)
+        {
+            console.log('province_city.js#getCities function error: #line : 30');
+        }
+    });
+ 
+ 
+    return false; // avoid to execute the actual submit of the form.
+}
+ 
+/**
+ * Load cities on state change
+ */
+$(document).on('change', '#province', function (e) {
+    getCities(this);
+});
+</script>
 
 @endsection
 
