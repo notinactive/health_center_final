@@ -88,7 +88,7 @@
                                                     @endif
                                                 
                                                 <td style="text-align: center;"> {{ getunitname($product->unitname) }} </td>
-                                                <td style="text-align: center;"> {{ $product->created_at }} </td>
+                                                <td style="text-align: center;"> {{ jdate($product->created_at)->format('%B %d، %Y') }}  </td>
                                                 <td style="text-align: center;"> {{ $product->codepaygiry }} </td>                                              
                                             </tr>
                                             @endforeach 

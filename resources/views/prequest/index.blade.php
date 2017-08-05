@@ -4,7 +4,7 @@
 
 <div class="col-lg-12">
 	<div class="row" >
-		<h1> نمایش و مدیریت درخواست های کالا <a href="<?= Url('prequest/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن درخواست جدید </a> </h1> 
+		<h3> نمایش و مدیریت درخواست های کالا <a href="<?= Url('prequest/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن درخواست جدید </a> </h3> 
 	</div>
 </div>
 <hr/>
@@ -52,8 +52,8 @@
                                 @endif
 
                                 <td style="text-align: center;">  
-                                	<a href="#" class="btn btn-primary btn-sm btn-line" data-toggle="modal" data-target="#show{{ $sabad->id }}">مشاهده جزئیات</a>
-                    				<a href="#" class="btn btn-danger btn-sm btn-line" data-toggle="modal" data-target="#delete{{ $sabad->id }}">حذف</a>
+                                	<a href="{{ route('prequest.show' , ['id' => $sabad->id]) }}" class="btn btn-primary btn-sm btn-line">مشاهده جزئیات</a>
+                    				<!--<a href="#" class="btn btn-warning btn-sm btn-line" data-toggle="modal" data-target="#delete{{ $sabad->id }}">تعلیق</a>-->
 	                            </td>
                             </tr>
                             @endforeach 

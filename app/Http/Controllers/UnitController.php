@@ -28,6 +28,8 @@ class UnitController extends Controller
      */
     public function create()
     {
+       // auth()->loginUsingId(1);
+        //return auth()->user();
         $provinces = Province::orderby('id' , 'ASC')->get(); 
         $cities = City::orderby('id' , 'ASC')->get();
 
@@ -42,13 +44,16 @@ class UnitController extends Controller
      */
     public function store(UnitRequest $request)
     {
-        $unit = new Unit($request->all());
+        //auth()->loginUsingId(1);
+        // $unit = new Unit($request->all());
 
-        if($unit -> save())
-        {
-            return redirect('/unit');
-        }
-        
+       // if($unit -> save())
+        //{
+        //    return redirect('/unit');
+       // }
+
+        return redirect('/');
+               
     }
 
     /**

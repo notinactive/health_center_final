@@ -88,7 +88,7 @@
                                                     @endif
                                                 
                                                 <td style="text-align: center;"> {{ getunitname($service->unitname) }} </td>
-                                                <td style="text-align: center;"> {{ $service->created_at }} </td>
+                                                <td style="text-align: center;"> {{ jdate($service->created_at)->format('%B %d، %Y') }} </td>
                                                 <td style="text-align: center;"> {{ $service->codepaygiry }} </td>                                              
                                             </tr>
                                             @endforeach 

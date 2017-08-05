@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sreq;
+use App\Requestservice;
 
 class SRequestController extends Controller
 {
@@ -47,7 +48,9 @@ class SRequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $requests = Sreq::find($id);
+        $services = Requestservice::where('sreqs_id' , $id)->get();
+        return view('srequest.show' , compact('services' , 'requests'));
     }
 
     /**
@@ -82,5 +85,23 @@ class SRequestController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+     public function reject_srequest()
+    {
+        $srequests = Sreq::where('reject' , 1)->paginate(10);
+        return view('clients.service_req.reject_req' , compact('srequests'));
+    }
+
+    public function reject_edit($id)
+    {
+        return view('clients.service_req.reject_edit');
+    }
+
+    public function rej_destroy($id)
+    {
+        $preqs = Sreq::where('id' , $id)->delete();
+
+        return redirect(route('rej_sreq'));
     }
 }

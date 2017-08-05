@@ -9,6 +9,7 @@
 	Route::resource('user' , 'UserController');
 	Route::resource('unit' , 'UnitController');
     Route::resource('serv_certificate' , 'ServCertificateController');
+    Route::resource('signature', 'SignatureController');
 ///////////////////////////////////////////////////////////////////////////////  
 	Route::get('prequest/create' , 'PRequestController@create');
 	Route::get('index' , 'HomeController@index');		
@@ -18,7 +19,7 @@
 	Route::get('select5-autocomplete-ajax', 'Select2AutocompleteController@dataAjax4');
 	Route::get('ticket' , 'HomeController@ticket')->name('ticket');
     Route::get('ticket_resp/{id}' , 'TicketController@ticket_resp')->name('ticket_resp');
-	Route::get('/' , 'HomeController@welcome');	
+	Route::get('/' , 'HomeController@index');	
     Route::get('reject_service' , 'HomeController@reject_service')->name('reject_service');
     Route::get('reject_product' , 'HomeController@reject_product')->name('reject_product');
     Route::get('notcheck_service' , 'HomeController@notcheck_service')->name('notcheck_service');
@@ -28,6 +29,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 	Route::post('save' , 'PRequestController@save_ajax');
 	Route::post('add' , 'PRequestController@add');
+    Route::post('/seen', 'TicketController@seen');
 	Route::post('search' , 'ProductController@search');
 	Route::post('search2' , 'ServiceController@search');
 	Route::post('search3' , 'UnitController@search');
@@ -35,6 +37,7 @@
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	Route::post('/empty' , 'ProductController@empty_pro');
 	Route::post('user/search_user' , 'UserController@search_user');
+    Route::post('ticket/store/{id}' , 'TicketController@ticket_answer')->name('ticket_answer');
 
     Route::get('/home', 'HomeController@index');
 
@@ -48,12 +51,14 @@
     Route::get('ticket/create' , 'TicketController@create');
     Route::get('ticket_show' , 'TicketController@index')->name('ticket_show');
     Route::post('ticket_store' , 'TicketController@store')->name('ticket.store');
-    Route::get('ticket_details' , 'TicketController@ticket_details');
-    Route::post('ticket/store/{id}' , 'TicketController@ticket_answer')->name('ticket_answer');
-
+    Route::get('ticket_details' , 'TicketController@ticket_details');   
     Route::get('notseen' , 'TicketController@notseen')->name('notseen');
     Route::get('answer' , 'TicketController@answer')->name('answer');
     Route::get('notanswer' , 'TicketController@notanswer')->name('notanswer');
+    Route::get('rej_preq', 'PRequestController@reject_prequest')->name('rej_preq');
+    Route::get('rej_edit/{id}' , 'PRequestController@reject_edit');
+    Route::get('rej_sreq', 'SRequestController@reject_srequest')->name('rej_sreq');
+    Route::get('rej_sedit/{id}' , 'SRequestController@reject_edit');
 ///////////////////////////////////////////////////////////////////////////
     Route::get('/select2-autocomplete-ajax', 'Select2AutocompleteController@client_dataAjax');
     Route::get('/request' , 'HomeController@final_request');	
@@ -98,4 +103,8 @@
 //////////////////////////////////////////////////////////////////////
     Route::post('/add' , 'PRequestController@add_2');
     Route::get('prequest/create' , 'PRequestController@create');
+    Route::delete('prequest/destroy/{id}' , 'PRequestController@rej_destroy');
+    Route::delete('srequest/destroy/{id}' , 'SRequestController@rej_destroy');
+///////////////////////////////////////////////////////////////////////<!-- Confirm Requests -->
+    Route::post('confirm_serv', 'ClientservController@confirm');
 });

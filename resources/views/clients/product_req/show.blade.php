@@ -1,43 +1,5 @@
 @extends('layouts.clientLayouts')
 
-@section('main_menu')
- 
-                <div class="span2" id="sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="<?=Url('client/index'); ?>" style="font-family: b koodak;"><i class="icon-chevron-right"></i> داشبورد</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/product_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست کالا</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/service_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست خدمت</a>
-                        </li>
-
-                        <li>
-                            <a href="tables.html" style="font-family: b koodak;"><i class="icon-chevron-left"></i> درخواست های رد شده</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-left">731</span> Orders</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-left">812</span> Invoices</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">27</span> Clients</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">1,234</span> Users</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">2,221</span> Messages</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-@endsection
 
 @section('statistics')
 	        <div class="block">

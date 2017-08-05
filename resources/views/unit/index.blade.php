@@ -4,7 +4,7 @@
 
 <div class="col-lg-12">
     <div class="row" >
-        <h1> نمایش و مدیریت واحدهای عملیاتی <a href="<?= Url('user/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن واحد عملیاتی جدید </a> </h1> 
+        <h1> نمایش و مدیریت واحدهای عملیاتی <a href="<?= Url('unit/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن واحد عملیاتی جدید </a> </h1> 
     </div>
 </div>
 <hr/>
@@ -57,6 +57,7 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
+                                <th style="text-align: center;">کد واحد عملیاتی </th>
                                 <th style="text-align: center;">نام واحد عملیاتی </th>
                                 <th style="text-align: center;">شماره تلفن</th>
                                 <th style="text-align: center;">توضیحات مربوطه</th>
@@ -67,6 +68,7 @@
                             
                             @foreach( $units as $unit )
                             <tr class="gradeC">
+                                <td style="text-align: center;"> {{ $unit->mainunit_id }} </td>
                                 <td style="text-align: center;"> {{ $unit->unitname }} </td>
                                 @if( $unit->phone == '' )
                                 <td style="text-align: center;"> <span style="color: red;">-----</span> </td>

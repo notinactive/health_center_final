@@ -26,7 +26,7 @@
                                     <div class="form-group">
                                        <table>
                                        <tr>
-                                        <td style="width: 100px;"><label style="width: 120px;" for="name" class="control-label col-lg-4">جستجوی تیکت ها براساس تاریخ</label></td>
+                                        <td style="width: 100px;"><label style="width: 120px;" for="name" class="control-label col-lg-4">شماره پیگیری تیکت</label></td>
                                         <td style="width: 300px;"><select class="itemName form-control" name="name"></select></td>
                                         <td><input type="submit" id="search" class="btn btn-info btn-md" value="جستجو" /></td>
                                         <td ><a href="<?= Url('/user'); ?>" id="list_view" class="btn btn-success btn-md">مشاهده لیست کاربران</a></td>
@@ -83,7 +83,7 @@
                                 <td style="text-align: center;">  
                                     @if($ticket->reply_code=='0')
                                     <a href="<?=Url('ticket_resp/'.$ticket->id); ?>" class="btn btn-primary btn-sm btn-line">پاسخگوئی</a>
-                                    <a href="#" onclick="{{seen($ticket->id)}}" class="btn btn-info btn-sm btn-line" data-toggle="modal" data-target="#delete{{ $ticket->id }}">مشاهده جزئیات</a>
+                                    <a href="#" onclick="seen({{ $ticket -> id }})" class="btn btn-info btn-sm btn-line" data-toggle="modal" data-target="#delete{{ $ticket->id }}">مشاهده جزئیات</a>
                                     @elseif($ticket->reply_code=='1')
                                     <a href="#" class="btn btn-info btn-sm btn-line" data-toggle="modal" data-target="#delete{{ $ticket->id }}">مشاهده جزئیات</a>
                                     @endif
@@ -153,25 +153,45 @@
                           @endforeach
                         </div>
                     </div>
+
+<script type="text/javascript">
+  
+seen= function (id)
+{
+  $.ajaxSetup ({
+
+      headers : {
+
+         'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content') 
+
+      }});
+
+      $.ajax({
+
+        url: '/seen',
+        type: "POST",
+        data: {'ticket_id':id ,  "_token": "{{ csrf_token() }}"},
+        success: function (data)
+        {
+          
+        }
+
+      });
+  
+}
+
+</script>
+                   
 @endsection
 
 <?php
 
 use App\Unit;
-use App\Ticket;
 
 function getunitname( $id )
 {
     $unit = Unit::where('id', $id)->first()['unitname'];
     return $unit;
 }
-
-function seen($id)
-{
-  $seen = Ticket::find($id);
-  $seen->seen = 1;
-  $seen->update();
-}
-
 
 ?>

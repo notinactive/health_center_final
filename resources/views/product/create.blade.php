@@ -43,14 +43,14 @@
 		                	<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">نام کالا</label>
 								<div class="col-lg-7">
-									<input type="text" name="name" id="name" class="form-control" placeholder="نام کالا را وارد نمائید" />
+									<input type="text" name="name" id="name" class="form-control" placeholder="نام کالا را وارد نمائید" value="{{ old('name') }}" />
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="description" class="control-label col-lg-3">توضیحات کالا</label>
 								<div class="col-lg-7">
-									<textarea name="description" class="ckeditor" id="description" placeholder="توضیحات کالا را وارد نمائید"></textarea>
+									<textarea name="description" class="ckeditor" id="description" placeholder="توضیحات کالا را وارد نمائید">{{ old('description') }}</textarea>
 								</div>
 							</div>
 

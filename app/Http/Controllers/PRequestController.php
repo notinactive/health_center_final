@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Preq;
+use App\Requestproduct;
 use Session;
 
 class PRequestController extends Controller
@@ -50,7 +51,9 @@ class PRequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $requests = Preq::find($id);
+        $products = Requestproduct::where('preqs_id' , $id)->get();
+        return view('prequest.show' , compact('products' , 'requests'));
     }
 
     /**
@@ -96,9 +99,9 @@ class PRequestController extends Controller
 
     public function add (Request $request)
     {       
-        $id = $request->get('products_id');
-        $count = $request->get('count');
-        $descriptin = $request->get('descriptin');
+        $id = $request->input('products_id');
+        $count = $request->input('count');
+        $descriptin = $request->input('descriptin');
 
         $request->session()->push('list', [$id , $count , $descriptin]);
       
@@ -142,5 +145,23 @@ class PRequestController extends Controller
     {
         Session::forget('list');
         return view('index');
+    }
+
+    public function reject_prequest()
+    {
+        $prequests = Preq::where('reject' , 1)->paginate(10);
+        return view('clients.product_req.reject_req' , compact('prequests'));
+    }
+
+    public function reject_edit($id)
+    {
+        return view('clients.product_req.reject_edit');
+    }
+
+    public function rej_destroy($id)
+    {
+        $preqs = Preq::where('id' , $id)->delete();
+
+        return redirect(route('rej_preq'));
     }
 }

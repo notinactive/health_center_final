@@ -16,6 +16,7 @@ class CreateRequestproductsTable extends Migration
         Schema::create('requestproduct', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('preqs_id');
+            $table->foreign('preqs_id')->references('id')->on('preqs')->onDelete('cascade');
             $table->integer('products_id');
             $table->string('count');
             $table->text('description');

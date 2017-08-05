@@ -4,45 +4,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
-@section('main_menu')
- 
-                <div class="span2" id="sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="<?=Url('client/index'); ?>" style="font-family: b koodak;"><i class="icon-chevron-right"></i> داشبورد</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/product_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست کالا</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/service_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست خدمت</a>
-                        </li>
-
-                        <li>
-                            <a href="tables.html" style="font-family: b koodak;"><i class="icon-chevron-left"></i> درخواست های رد شده</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-left">731</span> Orders</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-success pull-left">812</span> Invoices</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">27</span> Clients</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">1,234</span> Users</a>
-                        </li>
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">2,221</span> Messages</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-@endsection
-
 @section('statistics')
 	        <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -75,15 +36,15 @@
                                                </td>
 
                                                 <td style="text-align: center;">
-                                                 <input type="text" name="description" style="text-align: right; font-family: b nazanin;" id="description" />
+                                                 <input type="text" name="description" style="text-align: right; font-family: b nazanin;" id="description" value="{{ old('description') }}" />
                                                 </td>
 
-                                                <td style="text-align: center;"><input type="text" style="text-align: right; font-family: b nazanin;" name="count" id="count" />
+                                                <td style="text-align: center;"><input type="text" style="text-align: right; font-family: b nazanin;" name="count" id="count" value="{{ old('count') }}"/>
                                                 </td>
                                                 <td style="text-align: center;">
                                                     <select id="products_id" name="products_id" style="font-family: b nazanin; text-align: right;">
                                                         @foreach( $products as $product )
-                                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                        <option value="{{ $product->id }}" style="direction: rtl;">{{ $product->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>                                              

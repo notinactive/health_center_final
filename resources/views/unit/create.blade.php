@@ -17,13 +17,13 @@
 <hr/>
 
  @if($errors -> has('unitname'))
-                <div class="panel-body">
-                    <div class="alert alert-danger alert-dismissable">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                        {!! $errors->first('unitname') !!}                        
-                    </div>
-                </div>
-                @endif 
+    <div class="panel-body">
+       <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             {!! $errors->first('unitname') !!}                        
+       </div>
+    </div>
+ @endif 
 <div class="row">
 	<div class="col-lg-12" >
 
@@ -43,14 +43,14 @@
 		                	<div class="form-group">
 		                	    <label for="unitname" class="control-label col-lg-3">نام واحد</label>
 								<div class="col-lg-7">
-									<input type="text" name="unitname" id="unitname" class="form-control" placeholder="نام واحد را وارد نمائید" />
+								   <input type="text" name="unitname" id="unitname" class="form-control" placeholder="نام واحد را وارد نمائید" value="{{ old('unitname') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="phone" class="control-label col-lg-3">تلفن واحد</label>
 								<div class="col-lg-7">
-									<input type="text" name="phone" id="phone" class="form-control" placeholder="شماره تلفن واحد را وارد نمائید" />
+									<input type="text" name="phone" id="phone" class="form-control" placeholder="شماره تلفن واحد را وارد نمائید" value="{{ old('phone') }}"/>
 								</div>
 							</div>
 
@@ -67,7 +67,7 @@
 							</div>
 
 							<div class="form-group">
-		                	    <label for="phone" class="control-label col-lg-3">نام شهرستان</label>
+		                	    <label for="city_id" class="control-label col-lg-3">نام شهرستان</label>
 								<div class="col-lg-7">
 									<select id="city" name="city_id" class="form-control">
 
@@ -78,7 +78,7 @@
 							<div class="form-group">
 								<label for="description" class="control-label col-lg-3">توضیحات مربوطه</label>
 								<div class="col-lg-7">
-									<textarea name="description" class="ckeditor" id="description" placeholder="توضیحات مربوطه را وارد نمائید"></textarea>
+									<textarea name="description" class="ckeditor" id="description" placeholder="توضیحات مربوطه را وارد نمائید">{{ old('description') }}</textarea>
 								</div>
 							</div>
 
@@ -90,7 +90,7 @@
 
 		<div class="form-actions" style="text-align:center;margin-bottom:80px;">
 			<input type="submit" name="save_pro" id="save_pro" class="btn btn-primary btn-md" value="ثبت اطلاعات واحد" />
-			<a href="<?=Url('product'); ?>" class="btn btn-warning btn-md">مشاهده لیست واحدهای عملیاتی</a>
+			<a href="<?=Url('unit'); ?>" class="btn btn-warning btn-md">مشاهده لیست واحدهای عملیاتی</a>
 		</div>
 
 		</form>

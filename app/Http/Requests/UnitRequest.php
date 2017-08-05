@@ -25,6 +25,8 @@ class UnitRequest extends FormRequest
     {
         return [
             'unitname' => 'required',
+            'province' => 'required',
+
         ];
     }
 
@@ -32,6 +34,7 @@ class UnitRequest extends FormRequest
     {
         return [
             'unitname' => 'نام واحد',
+            'province' => 'استان'
         ];
     }
 

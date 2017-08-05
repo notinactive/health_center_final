@@ -45,49 +45,49 @@
 		                	<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">نام</label>
 								<div class="col-lg-7">
-									<input type="text" name="fname" id="fname" class="form-control" placeholder="نام را وارد نمائید" />
+									<input type="text" name="fname" id="fname" class="form-control" placeholder="نام را وارد نمائید" value="{{ old('fname') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">نام خانوادگی</label>
 								<div class="col-lg-7">
-									<input type="text" name="lname" id="lname" class="form-control" placeholder="نام خانوادگی را وارد نمائید" />
+									<input type="text" name="lname" id="lname" class="form-control" placeholder="نام خانوادگی را وارد نمائید" value="{{ old('lname') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">نام کاربری (کد ملی)</label>
 								<div class="col-lg-7">
-									<input type="text" name="name" maxlength="10" id="name" class="form-control" placeholder="نام کاربری را وارد نمائید" />
+									<input type="text" name="name" maxlength="10" id="name" class="form-control" placeholder="نام کاربری را وارد نمائید" value="{{ old('name') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">رمز عبور</label>
 								<div class="col-lg-7">
-									<input type="password" name="password" id="password" class="form-control" placeholder="رمز عبور را وارد نمائید" />
+									<input type="password" name="password" id="password" class="form-control" placeholder="رمز عبور را وارد نمائید" value="{{ old('password') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">آدرس ایمیل</label>
 								<div class="col-lg-7">
-									<input type="text" name="email" id="email" class="form-control" placeholder="آدرس ایمیل کاربر را وارد نمائید" />
+									<input type="text" name="email" id="email" class="form-control" placeholder="آدرس ایمیل کاربر را وارد نمائید" value="{{ old('email') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">شماره همراه</label>
 								<div class="col-lg-7">
-									<input type="text" name="mobile" maxlength="11" id="mobile" class="form-control" placeholder="شماره همراه کاربر را وارد نمائید" />
+									<input type="text" name="mobile" maxlength="11" id="mobile" class="form-control" placeholder="شماره همراه کاربر را وارد نمائید" value="{{ old('mobile') }}"/>
 								</div>
 							</div>
 
 							<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">تلفن ثابت</label>
 								<div class="col-lg-7">
-									<input type="text" name="phone" id="phone" maxlength="11" class="form-control" placeholder="تلفن ثابت کاربر را وارد نمائید" />
+									<input type="text" name="phone" id="phone" maxlength="11" class="form-control" placeholder="تلفن ثابت کاربر را وارد نمائید" value="{{ old('phone') }}"/>
 								</div>
 							</div>
 
@@ -115,14 +115,14 @@
 							<div class="form-group">
 								<label for="description" class="control-label col-lg-3">آدرس پستی</label>
 								<div class="col-lg-7">
-									<textarea name="address" class="form-control" style="resize: none;" id="address" placeholder="آدرس پستی کاربر را وارد نمائید"></textarea>
+									<textarea name="address" class="form-control" style="resize: none;" id="address" placeholder="آدرس پستی کاربر را وارد نمائید">{{ old('address') }}</textarea>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="description" class="control-label col-lg-3">توضیحات مربوطه</label>
 								<div class="col-lg-7">
-									<textarea name="description" style="resize: none;" class="form-control" id="description" placeholder="توضیحات مربوطه را وارد نمائید"></textarea>
+									<textarea name="description" style="resize: none;" class="form-control" id="description" placeholder="توضیحات مربوطه را وارد نمائید">{{ old('description') }}</textarea>
 								</div>
 							</div>
 

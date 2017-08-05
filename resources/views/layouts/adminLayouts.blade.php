@@ -7,6 +7,7 @@
      <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
      <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
@@ -231,6 +232,9 @@
                 </li>
 
                 <li><a href="<?= Url('ticket'); ?>"><i class="icon-table"></i> مدیریت تیکت ها 
+                </a></li>
+
+                <li><a href="{{ route('signature.index') }}"><i class="icon-pencil"></i> مدیریت اسکن های امضاء 
                 </a></li>
             </ul>
 

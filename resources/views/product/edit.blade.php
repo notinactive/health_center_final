@@ -43,7 +43,7 @@
 		                	<div class="form-group">
 		                	    <label for="name" class="control-label col-lg-3">نام کالا</label>
 								<div class="col-lg-7">
-									<input type="text" name="name" id="name" value="{{ $products->name }}" class="form-control"/>
+									<input type="text" name="name" id="name" value="{{ $products->name }}" class="form-control" />
 								</div>
 							</div>
 

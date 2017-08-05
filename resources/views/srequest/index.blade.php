@@ -4,7 +4,7 @@
 
 <div class="col-lg-12">
 	<div class="row" >
-		<h1> نمایش و مدیریت درخواست های خدمت <a href="<?= Url('srequest/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن درخواست جدید </a> </h1> 
+		<h3> نمایش و مدیریت درخواست های خدمت <a href="<?= Url('srequest/create'); ?>" class="btn btn-success btn-sm btn-line">افزودن درخواست جدید </a> </h3> 
 	</div>
 </div>
 <hr/>
@@ -22,11 +22,11 @@
                             <tr>
                                 <th style="text-align: center;">کد درخواست</th>
                                 <th style="text-align: center;">کد پیگیری </th>
-                                <th style="text-align: center;">تاریخ ثبت</th>
+                                <th style="text-align: center; width: 120px;">تاریخ ثبت</th>
                                 <th style="text-align: center;">واحد درخواست دهنده</th>
-                                <th style="text-align: center;"> وضعیت درخواست </th>
+                                <th style="text-align: center; width: 160px;"> وضعیت درخواست </th>
                                 <th style="text-align: center;"> گواهی خدمت </th>
-                                <th style="text-align: center;"> عملیات مورد نظر </th>
+                                <th style="text-align: center; width: 160px;"> عملیات مورد نظر </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,16 +53,16 @@
                                 @endif
 
                                  @if( $service->certificate==0 )
-                                    <td style="color: black;text-align: center;">دارد</td>
-                                @elseif( $service->certificate==1 )
                                     <td style="color: red;text-align: center;">ندارد</td>
+                                @elseif( $service->certificate==1 )
+                                    <td style="color: black;text-align: center;">دارد</td>
                                 @endif
 
                                 <td style="text-align: center;">  
-                                	<a href="#" class="btn btn-primary btn-sm btn-line">مشاهده جزئیات</a>
+                                	<a href="{{ route('srequest.show' , [$service->id]) }}" class="btn btn-primary btn-sm btn-line">مشاهده جزئیات</a>
                     				
                                     @if($service->certificate==0)
-                                    <a href="{{ route('cert.create' , ['id' => $service->id]) }}" class="btn btn-warning btn-sm btn-line">ثبت گواهی</a>
+                                    <a href="{{ route('cert.create' , ['id' => $service->id]) }}" class="btn btn-warning btn-sm btn-line">گواهی</a>
                                     @elseif($service->certificate==1)
                                     @endif
 	                            </td>

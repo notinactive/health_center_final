@@ -111,5 +111,15 @@ class TicketController extends Controller
             return redirect()->back();
         }    
     }
+
+    public function seen (Request $request)
+    {
+        $ticket = Ticket::where('id' , $request->ticket_id)->first();
+        $ticket->seen = 1;       
+        if($ticket->save())
+        {
+            return 1;
+        }
+    }
    
 }

@@ -62,7 +62,42 @@
                     
                 </div>
 
-                @yield('main_menu')
+                 <div class="span2" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li class="active">
+                            <a href="<?=Url('client/index'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> داشبورد</a>
+                        </li>
+                       
+                        <li>
+                            <a href="<?=Url('client/product_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست کالا</a>
+                        </li>
+                       
+                        <li>
+                            <a href="<?=Url('client/service_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست خدمت</a>
+                        </li>
+                        
+                        <li>
+                            <a href="<?=Url('client/ticket/create'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> ثبت تیکت برای تدارکات</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('ticket_show') }}" style="font-family: b koodak; "><i class="icon-chevron-left"></i>پیگیری تیکت ها </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('rej_preq') }}" style="font-family: b koodak; "><i class="icon-chevron-left"></i>درخواست کالای رد شده </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('rej_sreq') }}" style="font-family: b koodak; "><i class="icon-chevron-left"></i>درخواست خدمت رد شده </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#"><span class="badge badge-info pull-left">2,221</span> Messages </a>
+                        </li>
+                        
+                    </ul>
+                </div>
 
             </div>
             <hr>

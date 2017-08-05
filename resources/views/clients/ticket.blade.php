@@ -35,50 +35,6 @@
         </div>
 @endsection
 
-@section('main_menu')
- 
-                <div class="span2" id="sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="<?=Url('client/index'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> داشبورد</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/product_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست کالا</a>
-                        </li>
-                       
-                        <li>
-                            <a href="<?=Url('client/service_req'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> مدیریت درخواست خدمت</a>
-                        </li>
-
-                        <li>
-                            <a href="<?=Url('client/'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> درخواست های انصرافی </a>
-                        </li>
-
-                        <li>
-                            <a href="<?=Url('client/ticket/create'); ?>" style="font-family: b koodak;"><i class="icon-chevron-left"></i> ثبت تیکت برای تدارکات</a>
-                        </li>
-
-                        <li>
-                            <a href="#" style="font-family: b koodak; "><span class="badge badge-success pull-left" style="margin-right: 5px;">812</span> پیگیری تیکت ها </a>
-                        </li>
-
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">27</span> Clients </a>
-                        </li>
-
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">1,234</span> Users </a>
-                        </li>
-                        
-                        <li>
-                            <a href="#"><span class="badge badge-info pull-left">2,221</span> Messages </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-@endsection
-
 @section('statistics')
 	               <div class="block">
                             <div class="navbar navbar-inner block-header">
@@ -124,14 +80,14 @@
                                     <div class="form-group">                                        
                                         <div class="col-lg-7" style="text-align: right;">
                                           <label for="name" class="control-label col-lg-3" style="font-family: b koodak; text-align: right;">عنوان تیکت</label>
-                                            <input type="text" name="title" style="font-family: b nazanin; text-align: right;" id="title" class="form-control" placeholder="عنوان تیکت را وارد نمائید" />
+                                            <input type="text" name="title" style="font-family: b nazanin; text-align: right;" id="title" class="form-control" placeholder="عنوان تیکت را وارد نمائید" value="{{ old('title') }}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="description" class="control-label col-lg-3" style="font-family: b koodak; text-align: right;">متن تیکت</label>
                                         <div class="col-lg-5">
-                                            <textarea name="content" class="ckeditor" id="content" placeholder="توضیحات تیکت را وارد نمائید"></textarea>
+                                            <textarea name="content" class="ckeditor" id="content" placeholder="توضیحات تیکت را وارد نمائید">{{ old('content') }}</textarea>
                                         </div>
                                     </div>
 

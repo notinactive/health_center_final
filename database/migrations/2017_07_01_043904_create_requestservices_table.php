@@ -15,8 +15,9 @@ class CreateRequestservicesTable extends Migration
     {
         Schema::create('requestservice', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('preqs_id');
-            $table->integer('products_id');
+            $table->integer('sreqs_id');
+            $table->foreign('sreqs_id')->references('id')->on('sreqs')->onDelete('cascade');
+            $table->integer('services_id');
             $table->string('count');
             $table->text('description');
             $table->string('fi')->default(0);

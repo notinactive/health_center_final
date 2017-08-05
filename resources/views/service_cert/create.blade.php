@@ -48,15 +48,15 @@ use App\Product;
 		                <div id='TextBoxesGroup'>    
 		                	<div id="TextBoxDiv1">
 								<div class="col-lg-5">
-									 <input type="text" name="description" class="form-control" placeholder="شرح را وارد نمائید">
+									 <input type="text" name="description" class="form-control" placeholder="شرح را وارد نمائید" value="{{ old('description') }}">
 								</div>
 
 								<div class="col-lg-2">
-									 <input type="text" class="form-control" name="count" placeholder="تعداد مورد نظر">
+									 <input type="text" class="form-control" name="count" placeholder="تعداد مورد نظر" value="{{ old('count') }}">
 								</div>
 
 								<div class="col-lg-3">
-									 <input type="text" class="form-control" name="price" placeholder="مبلغ را وارد نمائید">
+									 <input type="text" class="form-control" name="price" placeholder="مبلغ را وارد نمائید" value="{{ old('price') }}">
 								</div>
 								<div class="col-lg-2">
 								  <input type="submit" class="btn btn-success btn-sm" name="btn_buy" id="btn_buy" value="افزودن به گواهی" />

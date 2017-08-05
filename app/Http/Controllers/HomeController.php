@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      auth()->loginUsingId(1);
+      //()->loginUsingId(1);
       $tickets = Ticket::where('seen' , 0)->count();
       $products = Preq::where('seen' , 0)->count();
       $services = Sreq::where('seen' , 0)->count();
@@ -59,11 +59,7 @@ class HomeController extends Controller
 
       return view('index' , compact('tickets' , 'products' , 'services' , 'complete1','reject1','current1' , 'new1' , 'complete2','reject2','current2' , 'new2' , 'notseen_ticket' , 'notanswer_ticket' , 'seen_ticket' , 'answer_ticket'));
     }
-     public function welcome()
-    {
-        return view('index');
-    }
-
+    
       public function ticket()
     {
         $tickets = Ticket::orderby('id' , 'DESC')->paginate(10);

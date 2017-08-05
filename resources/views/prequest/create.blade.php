@@ -15,7 +15,7 @@ use App\Product;
 ?>
 <div class="col-lg-12">
 	<div class="row" >
-		<h1> افزودن درخواست کالای جدید </h1> 
+		<h3> افزودن درخواست کالای جدید </h3> 
 	</div>
 </div>
 <hr/>
@@ -33,6 +33,15 @@ use App\Product;
 		            </div>
 		            <div class="panel-body">
 		                <div class="table-responsive">			                    
+			                	    
+			                 @if(count($errors) > 0)
+							   <div class="alert alert-danger">              
+							     <ul>
+							       @foreach($errors->all() as $error)
+							         <li>{{ $error }}</li>
+							       @endforeach
+							   </div>
+							 @endif
 		                	
 		                	<div class="form-group">
 		                	
@@ -44,7 +53,7 @@ use App\Product;
 		                	    <label for="service_date" class="control-label col-lg-2"></label>
 		                	    <br />
 		                	    <br />
-		                	    
+
 		                <div id='TextBoxesGroup'>    
 		                	<div id="TextBoxDiv1">
 								<div class="col-lg-3">
@@ -59,7 +68,7 @@ use App\Product;
 									 <input type="text" class="form-control" name="description" placeholder="توضیحات مربوطه را وارد نمائید">
 								</div>
 								<div class="col-lg-2">
-								  <input type="submit" class="btn btn-success btn-sm" name="btn_buy" id="btn_buy" value="افزودن به لیست خرید" />
+								  <button  class="btn btn-success btn-sm" name="btn_buy" id="btn_buy">افزودن به لیست خرید</button>
 								</div>
 							</div>
 						</div>									
@@ -69,10 +78,6 @@ use App\Product;
 							</div>
 							<hr>
 
-				<!--<input type='button' class="btn btn-info" value='افزودن ردیف' id='addButton'>
-				<input type='button' class="btn btn-danger" value='حذف ردیف' id='removeButton'>
-				<input type='button' value='مقدار تکست باکس' id='getButtonValue'>-->
-					
 					  <div id="salam">
 			            <table class="table table-striped table-bordered table-hover">
 			                <thead id="thead">
@@ -169,7 +174,6 @@ use App\Product;
 </script>
 
 
-<?php $url10=Url('/add'); ?>
 <script>
           $(document).ready(function (event) { 
 			 $("#form").on('submit',(function(event) {
@@ -203,7 +207,7 @@ use App\Product;
 
 			  	 $.ajax ({
 				  type:"POST",
-				  url:'<?= $url10 ?>',
+				  url:'/add',
 				  data:  new FormData(myForm),
                   contentType: false,
                   cache: false,
@@ -213,8 +217,7 @@ use App\Product;
                      $("#salam").show();
                      console.log(resp);
                      $("#thead").html('<tr><th style="text-align: center;">نام کالا </th><th style="text-align: center;">مقدار برآورد شده</th><th style="text-align: center;"> عملیات موردنظر </th></tr>');
-                     var html= '';
-                     
+                                          
                      $.each(resp,function(key){
 
                         html='<table class="table table-striped table-bordered table-hover"><tr>'+'<td style="text-align: center;">'+resp[key].name+'</td>';
